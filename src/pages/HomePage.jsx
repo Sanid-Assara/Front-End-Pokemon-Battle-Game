@@ -73,6 +73,11 @@ const HomePage = () => {
                 className="border border-gray-300 rounded-lg p-2 mb-4 w-full md:w-1/2" 
             />
             {renderContent()}
+
+            <footer className="mt-8 p-4 bg-gray-800 text-white text-center">
+                <p>© {new Date().getFullYear()} Pokémon Inc.</p>
+                <p>All Rights Reserved</p>
+            </footer>
         </div>
     );
 };
