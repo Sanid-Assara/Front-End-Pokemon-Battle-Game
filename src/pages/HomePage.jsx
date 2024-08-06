@@ -8,6 +8,7 @@ const HomePage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [myPokemonList, setMyPokemonList] = useState([]); // list of added pokemons
 
     // Fetch Pokémon data from PokeAPI
     const fetchPokemon = async () => {
@@ -33,6 +34,11 @@ const HomePage = () => {
         setSearchTerm(event.target.value);
     };
 
+    //adding pokemons to the list
+     const handleAddPokemon = (pokemon) => {
+        setMyPokemonList((prevList) => [...prevList, pokemon]); 
+    };
+
     // Function to render content
     const renderContent = () => {
         if (loading) {
@@ -56,7 +62,10 @@ const HomePage = () => {
         return (
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
                 {filteredPokemonList.map(pokemon => (
-                    <PokemonCards key={pokemon.id} pokemon={pokemon} /> //Use the PokemonCards component
+                    <PokemonCards 
+                        key={pokemon.id} 
+                        pokemon={pokemon} 
+                        onAdd={handleAddPokemon}/> //Use the PokemonCards component
                 ))}
             </ul>
         );
@@ -73,6 +82,13 @@ const HomePage = () => {
                 className="border border-gray-300 rounded-lg p-2 mb-4 w-full md:w-1/2" 
             />
             {renderContent()}
+
+            <h2 className="text-2xl font-bold mt-6">My Pokémon List</h2>
+            <ul>
+                {myPokemonList.map((pokemon, index) => (
+                    <li key={index}>{pokemon.name}</li> // display of added pokemons
+                ))}
+            </ul>
 
             <footer className="mt-8 p-4 bg-gray-800 text-white text-center">
                 <p>© {new Date().getFullYear()} Pokémon Inc.</p>
