@@ -1,6 +1,6 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import './App.css'
-// import Navbar from './components/Navbar';
+import Navbar from './components/Navbar';
 import Home from './pages/HomePage';
 import PokemonDetails from './pages/PokemonDetailsPage';
 import MyRoster from './pages/MyRosterPage';
