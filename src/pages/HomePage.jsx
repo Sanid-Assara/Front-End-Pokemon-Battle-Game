@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PokemonCards from './PokemonCard';
 
 const HomePage = () => {
     const [pokemonList, setPokemonList] = useState([]);
@@ -55,12 +56,7 @@ const HomePage = () => {
         return (
             <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
                 {filteredPokemonList.map(pokemon => (
-                    <li key={pokemon.id} className="border border-gray-300 rounded-lg p-4 flex flex-col items-center">
-                        <Link to={`/pokemon/${pokemon.name}`} aria-label={`View ${pokemon.name}`} className="flex flex-col items-center">
-                            <img src={pokemon.sprites.front_default} alt={pokemon.name} className="w-16 h-16" /> {/* Pokémon thumbnail */}
-                            <span className="mt-2 capitalize text-lg">{pokemon.name}</span> {/* Display Pokémon's name with capital letter */}
-                        </Link>
-                    </li>
+                    <PokemonCards key={pokemon.id} pokemon={pokemon} /> //Use the PokemonCards component
                 ))}
             </ul>
         );
