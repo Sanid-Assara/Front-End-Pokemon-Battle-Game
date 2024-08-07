@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import './App.css'
 import Home from './pages/HomePage';
@@ -8,7 +9,7 @@ import PokemonDetails from './pages/PokemonDetailsPage';
 // import Battle from './pages/BattlePage';
 // import Leaderboard from './pages/LeaderboardPage';
 import Layout from './components/Layout';
-import { useState } from 'react';
+
 
 function App() { 
   const [myPokemonList, setMyPokemonList] = useState([]);
