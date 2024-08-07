@@ -1,7 +1,9 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import './App.css'
 import Home from './pages/HomePage';
+
 import PokemonDetails from './pages/PokemonDetailsPage';
+// import PokemonDetails from './pages/PokemonDetailsPage';
 // import MyRoster from './pages/MyRosterPage';
 // import Battle from './pages/BattlePage';
 // import Leaderboard from './pages/LeaderboardPage';
@@ -21,6 +23,7 @@ function App() {
       {/* <Route path='/my-roster' element={<MyRoster />} />
       <Route path='/battle' element={<Battle />} />
       <Route path='/leaderboard' element={<Leaderboard />} />  */}
+
     </Route>
   ));
 
