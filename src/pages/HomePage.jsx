@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import PokemonCards from './PokemonCard';
+// import PokemonCards from './components/PokemonCard';
 
 const HomePage = () => {
     const [pokemonList, setPokemonList] = useState([]);
@@ -59,16 +59,16 @@ const HomePage = () => {
             pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-        return (
-            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-                {filteredPokemonList.map(pokemon => (
-                    <PokemonCards 
-                        key={pokemon.id} 
-                        pokemon={pokemon} 
-                        onAdd={handleAddPokemon}/> //Use the PokemonCards component
-                ))}
-            </ul>
-        );
+        // return (
+        //     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+        //         {filteredPokemonList.map(pokemon => (
+        //             <PokemonCards 
+        //                 key={pokemon.id} 
+        //                 pokemon={pokemon} 
+        //                 onAdd={handleAddPokemon}/> //Use the PokemonCards component
+        //         ))}
+        //     </ul>
+        // );
     };
 
     return (
