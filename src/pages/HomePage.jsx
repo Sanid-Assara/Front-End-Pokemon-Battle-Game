@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import PokemonCards from './components/PokemonCard';
+import PokemonCards from '../components/PokemonCard';
 
-const HomePage = () => {
+
+
+const HomePage = ({ onAdd }) => {
     const [pokemonList, setPokemonList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -13,7 +15,7 @@ const HomePage = () => {
     // Fetch Pokémon data from PokeAPI
     const fetchPokemon = async () => {
         try {
-            const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100');
+            const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=');
             const pokemonsWithDetails = await Promise.all(response.data.results.map(async (pokemon) => {
                 const detailResponse = await axios.get(pokemon.url);
                 return { ...pokemon, ...detailResponse.data }; 
@@ -59,16 +61,19 @@ const HomePage = () => {
             pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
 
-        // return (
-        //     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-        //         {filteredPokemonList.map(pokemon => (
-        //             <PokemonCards 
-        //                 key={pokemon.id} 
-        //                 pokemon={pokemon} 
-        //                 onAdd={handleAddPokemon}/> //Use the PokemonCards component
-        //         ))}
-        //     </ul>
-        // );
+
+        return (
+            <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
+                    {filteredPokemonList.map(pokemon => (
+                        <PokemonCards 
+                            key={pokemon.id} 
+                            pokemon={pokemon} 
+                            onAdd={onAdd} 
+                        />
+                    ))}
+                </ul>
+        );
+
     };
 
     return (
