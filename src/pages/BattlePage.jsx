@@ -47,7 +47,7 @@ const BattlePage = () => {
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-6 max-w-6xl h-screen mx-auto">
       {!battleStarted ? (
         <div className="battle-preparation">
           <h1 className="text-2xl font-bold mb-4">Pokémon Battle Preparation</h1>
@@ -68,7 +68,7 @@ const BattlePage = () => {
           <button 
             onClick={startBattle} 
             disabled={!userName || !selectedPokemon}
-            className="w-full px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow hover:bg-blue-700"
+            className="w-60 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md shadow hover:bg-blue-700"
           >
             Start Battle
           </button>
