@@ -4,3 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+
+body {
+  background-color: rgb(223, 241, 222); 
+  margin: 0; 
+  padding: 0; 
+}
