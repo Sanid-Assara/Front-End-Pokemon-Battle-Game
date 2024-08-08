@@ -10,6 +10,7 @@ const LeaderboardPage = () => {
             try {
                 const { data } = await axios.get('http://localhost:8000/api/leaderboard');
                 setLeaderboard(data);
+                console.log(data);
             } catch (error) {
                 console.error("Error fetching leaderboard data", error);
             } finally {
@@ -21,7 +22,7 @@ const LeaderboardPage = () => {
     }, []);
 
     return (
-        <div className="container mx-auto px-4 py-6">
+        <div className="container h-screen mx-auto px-4 py-6">
             <h1 className="text-3xl font-bold mb-4">Top 10 Players</h1>
             <div className="overflow-x-auto">
                 {loading ? (
@@ -47,7 +48,7 @@ const LeaderboardPage = () => {
                                         {index + 1}
                                     </td>
                                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${index === 0 ? 'font-bold text-yellow-800' : 'text-gray-500'}`}>
-                                        {player.name}
+                                        {player.username}
                                     </td>
                                     <td className={`px-6 py-4 whitespace-nowrap text-sm ${index === 0 ? 'font-bold text-yellow-800' : 'text-gray-500'}`}>
                                         {player.score}

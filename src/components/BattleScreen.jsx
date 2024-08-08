@@ -1,7 +1,7 @@
 import React from 'react';
 import PokemonListItem from './PokemonListItem';
 
-const BattleScreen = ({ selectedPokemon, opponentPokemon, battleResult, onReset }) => {
+const BattleScreen = ({ selectedPokemon, opponentPokemon, battleResult, score, onReset }) => {
   return (
     <div className="battle-screen">
       <h2 className="text-2xl font-bold mb-4">Battle Screen</h2>
@@ -19,6 +19,7 @@ const BattleScreen = ({ selectedPokemon, opponentPokemon, battleResult, onReset 
         />
       </div>
       <p className="text-4xl text-fuchsia-500 font-semibold mt-4">Result: {battleResult.toUpperCase()}</p>
+      <p className="text-3xl text-indigo-500 font-medium mt-2">Your Score: {score}</p> {/* Display the score here */}
       <button 
         onClick={onReset} 
         className="max-w-4xl px-4 py-2 bg-gray-500 text-white font-semibold rounded-md shadow hover:bg-gray-700 mt-4"
