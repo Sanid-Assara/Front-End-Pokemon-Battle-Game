@@ -44,7 +44,7 @@ const HomePage = ({ onAdd }) => {
     // Function to render content
     const renderContent = () => {
         if (loading) {
-            return <div className="animate-spin">Loading Pokémon...</div>;
+            return <span className="loading loading-dots loading-lg"></span>
         }
 
         if (error) {
@@ -78,7 +78,13 @@ const HomePage = ({ onAdd }) => {
 
     return (
         <div className="p-6">
-            <h1 className="text-3xl font-bold mb-4">Pokémon List</h1>
+            <div className="flex justify-center mb-4">
+                <img 
+                src="https://www.svgrepo.com/show/306584/pokemon.svg" 
+                alt="Opis SVG" 
+                className="w-48 h-48 bg-transparent" 
+                />
+            </div>
             <input
                 type="text"
                 placeholder="Search Pokémon..."
@@ -88,14 +94,14 @@ const HomePage = ({ onAdd }) => {
             />
             {renderContent()}
 
-            <h2 className="text-2xl font-bold mt-6">My Pokémon List</h2>
+            {/* <h2 className="text-2xl font-bold mt-6">My Pokémon List</h2> */}
             <ul>
                 {myPokemonList.map((pokemon, index) => (
                     <li key={index}>{pokemon.name}</li> // display of added pokemons
                 ))}
             </ul>
 
-            <footer className="mt-8 p-4 bg-gray-800 text-white text-center">
+            <footer className="mt-8 p-4 bg-blue-600 text-white text-center">
                 <p>© {new Date().getFullYear()} Pokémon Inc.</p>
                 <p>All Rights Reserved</p>
             </footer>
