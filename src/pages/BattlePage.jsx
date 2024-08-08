@@ -47,7 +47,7 @@ const BattlePage = () => {
   };
 
   return (
-    <div className="p-6 max-w-xl mx-auto">
+    <div className="p-6 max-w-6xl mx-auto">
       {!battleStarted ? (
         <div className="battle-preparation">
           <h1 className="text-2xl font-bold mb-4">Pokémon Battle Preparation</h1>
