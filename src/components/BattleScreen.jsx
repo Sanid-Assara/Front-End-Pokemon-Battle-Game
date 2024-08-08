@@ -21,7 +21,7 @@ const BattleScreen = ({ selectedPokemon, opponentPokemon, battleResult, onReset 
       <p className="text-4xl text-fuchsia-500 font-semibold mt-4">Result: {battleResult.toUpperCase()}</p>
       <button 
         onClick={onReset} 
-        className="w-full px-4 py-2 bg-gray-500 text-white font-semibold rounded-md shadow hover:bg-gray-700 mt-4"
+        className="max-w-4xl px-4 py-2 bg-gray-500 text-white font-semibold rounded-md shadow hover:bg-gray-700 mt-4"
       >
         Prepare for Next Battle
       </button>
