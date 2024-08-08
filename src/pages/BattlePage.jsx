@@ -9,6 +9,7 @@ const BattlePage = () => {
   const [battleStarted, setBattleStarted] = useState(false);
   const [opponentPokemon, setOpponentPokemon] = useState(null);
   const [battleResult, setBattleResult] = useState(null);
+  const [score, setScore] = useState(0); // New state for score
 
   // Fetch Pokémon data
   useEffect(() => {
@@ -32,6 +33,17 @@ const BattlePage = () => {
       const result = calculateBattleResult(selectedPokemon, randomPokemon);
       setBattleResult(result);
 
+      // Assign score based on the result
+      let calculatedScore = 0;
+      if (result === 'win') calculatedScore = 100;
+      else if (result === 'lose') calculatedScore = 50;
+      else calculatedScore = 75; // For draw
+
+      setScore(calculatedScore);
+
+      // Post the score to the backend
+      postScore(userName, calculatedScore);
+
       setBattleStarted(true);
     }
   };
@@ -44,6 +56,30 @@ const BattlePage = () => {
     if (playerStat > opponentStat) return 'win';
     if (playerStat < opponentStat) return 'lose';
     return 'draw';
+  };
+
+  // Function to post the score to the backend
+  const postScore = async (userName, score) => {
+    try {
+      const response = await fetch('http://localhost:8000/api/leaderboard', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: userName,
+          score: score,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to post score');
+      }
+
+      console.log('Score posted successfully');
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
@@ -78,6 +114,7 @@ const BattlePage = () => {
           selectedPokemon={selectedPokemon} 
           opponentPokemon={opponentPokemon} 
           battleResult={battleResult} 
+          score={score}
           onReset={() => setBattleStarted(false)}
         />
       )}
