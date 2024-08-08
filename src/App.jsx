@@ -5,7 +5,7 @@ import Home from './pages/HomePage';
 
 import PokemonDetails from './pages/PokemonDetailsPage';
 // import MyRoster from './pages/MyRosterPage';
-// import Battle from './pages/BattlePage';
+import Battle from './pages/BattlePage';
 import Leaderboard from './pages/LeaderboardPage';
 import Layout from './components/Layout';
 
@@ -21,8 +21,8 @@ function App() {
       <Route index element={<Home />} />
       <Route path='/pokemon/:pokemonId' element={<PokemonDetails onAdd={handleAddPokemon} />} />
       <Route path='/leaderboard' element={<Leaderboard />} /> 
-      {/* <Route path='/my-roster' element={<MyRoster />} />
       <Route path='/battle' element={<Battle />} />
+      {/* <Route path='/my-roster' element={<MyRoster />} />
        */}
 
     </Route>
