@@ -55,21 +55,21 @@ const PokemonDetailsPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-green-50 p-6 flex flex-col justify-between">
-            <div className="card card-side bg-yellow-300 shadow-xl flex flex-row p-6 opacity-90">
+        <div className="min-h-screen bg-lime-50 p-6 flex flex-col justify-between">
+            <div className="card card-side bg-yellow-300 shadow-xl flex flex-row p-12 opacity-90 max-w-4xl mx-auto mt-20">
                 <figure className="flex-shrink-0 w-1/2">
                     <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} className="w-full h-auto mx-auto" />
                 </figure>
-                <div className="card-body text-center md:text-left flex flex-col justify-between w-1/2">
-                    <h2 className="card-title text-2xl font-bold mb-4">{pokemonDetails.name.toUpperCase()}</h2>
+                <div className="card-body text-center md:text-left flex flex-col justify-between w-2/3">
+                    <h2 className="card-title text-3xl font-bold mb-4">{pokemonDetails.name.toUpperCase()}</h2>
                     <h3 className="text-lg font-bold">Details:</h3>
                     <p><strong>Height:</strong> {pokemonDetails.height}</p>
                     <p><strong>Weight:</strong> {pokemonDetails.weight}</p>
                     <p><strong>Types:</strong> {pokemonDetails.types.map(type => type.type.name).join(', ')}</p>
                     <p><strong>Abilities:</strong> {pokemonDetails.abilities.map(ability => ability.ability.name).join(', ')}</p>
                     <div className="card-actions justify-center md:justify-start mt-4">
-                        <button onClick={handleAddPokemon} className="btn btn-secondary btn-sm w-full mb-2">Add to my roster</button>
-                        <button onClick={handleBack} className="btn btn-default btn-sm w-full">Back to Home</button>
+                        <button onClick={handleAddPokemon} className="btn btn-secondary btn-md w-full mb-2">Add to my roster</button>
+                        <button onClick={handleBack} className="btn btn-default btn-md w-full">Back to Home</button>
                     </div>
                 </div>
             </div>
