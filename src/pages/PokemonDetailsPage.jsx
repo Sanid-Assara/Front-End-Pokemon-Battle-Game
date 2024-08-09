@@ -8,10 +8,11 @@ const PokemonDetailsPage = () => {
     const [pokemonDetails, setPokemonDetails] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [notification, setNotification] = useState(''); // State for notification
     const navigate = useNavigate(); // To navigate back to the home page
     const { addPokemon } = useRoster(); // Use a hook to obtain the addPokemon function
 
-    // Function to fetch Pokémon details from PokeAPI
+    // function to fetch pokemon details from PokeAPI
     const fetchPokemonDetails = async () => {
         try {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
@@ -30,6 +31,8 @@ const PokemonDetailsPage = () => {
     const handleAddPokemon = () => {
         if (pokemonDetails) {
             addPokemon(pokemonDetails); // Call addPokemon from context to add the Pokémon
+            setNotification(`${pokemonDetails.name} has been added to your roster!`); // Set notification
+            setTimeout(() => setNotification(''), 3000); // Clear notification after 3 seconds
         }
     };
 
@@ -56,6 +59,11 @@ const PokemonDetailsPage = () => {
 
     return (
         <div className="min-h-screen bg-lime-50 p-6 flex flex-col justify-between">
+            {notification && ( // Render notification if it exists
+                <div className="bg-green-600 text-white p-4 rounded shadow-md mb-4 transition-opacity duration-300">
+                    {notification}
+                </div>
+            )}
             <div className="card card-side bg-yellow-300 shadow-xl flex flex-row p-12 opacity-90 max-w-4xl mx-auto mt-20">
                 <figure className="flex-shrink-0 w-1/2">
                     <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} className="w-full h-auto mx-auto" />
