@@ -21,12 +21,6 @@ const PokemonCards = ({ pokemon, onAdd }) => {
                     <Link to={`/pokemon/${pokemon.id}`} className="btn btn-primary btn-sm w-full mb-2">
                         View Details
                     </Link>
-                    <button 
-                        onClick={handleAddPokemon} 
-                        className="btn btn-secondary btn-sm w-full"
-                    >
-                        Add to My Roster
-                    </button>
                 </div>
             </div>
         </div>
@@ -34,4 +28,4 @@ const PokemonCards = ({ pokemon, onAdd }) => {
   
 };
 
-export default PokemonCards;
+export default PokemonCards;   

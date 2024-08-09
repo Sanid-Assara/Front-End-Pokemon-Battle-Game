@@ -4,10 +4,12 @@ import './App.css'
 import Home from './pages/HomePage';
 
 import PokemonDetails from './pages/PokemonDetailsPage';
-// import MyRoster from './pages/MyRosterPage';
+import MyRoster from './pages/MyRoosterPage';
 import Battle from './pages/BattlePage';
 import Leaderboard from './pages/LeaderboardPage';
 import Layout from './components/Layout';
+import { RosterProvider } from './components/RosterContext';
+
 
 
 function App() { 
@@ -22,14 +24,17 @@ function App() {
       <Route path='/pokemon/:pokemonId' element={<PokemonDetails onAdd={handleAddPokemon} />} />
       <Route path='/leaderboard' element={<Leaderboard />} /> 
       <Route path='/battle' element={<Battle />} />
-      {/* <Route path='/my-roster' element={<MyRoster />} />
-       */}
+      <Route path='/my-roster' element={<MyRoster />} />
+       
 
     </Route>
   ));
 
-  
-  return <RouterProvider router={router} />;
+  return (
+    <RosterProvider> 
+      <RouterProvider router={router} />
+    </RosterProvider>
+  );
 }
   
 
